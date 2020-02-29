@@ -4,7 +4,7 @@ Create a private and dockerized ipfs network.
 
 ## Setup
 
-On a single machine do steps 1 - 6. Then run steps 1, 2, 4, 6 on the other machines.
+On a single machine (bootstrap node) do steps 1 - 6. Then run steps 1, 2, 4, 6 on the other machines.
 
 #### 1. Download and install
 
@@ -79,7 +79,59 @@ docker exec ipfs_host ipfs bootstrap add \
 
 Your command will have a different path. See [Step 5](#5-get-node-information).
 
+#### 7. Restart nodes
+
+Do this on all the nodes, including bootrap.
+
+`docker restart ipfs_host`
+
+See if you're connected. Run this on all nodes, too.
+
+`docker exec ipfs_host ipfs swarm peers`
+
+`/ip4/192.168.96.2/tcp/4001/ipfs/QmRBMTxuQhk8fYmtwBb7JbYPFzydMznkTTrmWDf7AY62Pb`
+
+If you get no response, see below about [network issues](#network-issues).
+
+#### 8. Try and add a file to the network
+
+```
+echo 'Hello World!' > private-network-ipfs/staging/hello.txt
+docker exec ipfs_host ipfs add /export/hello.txt
+```
+
+```
+added QmfM2r8seH2GiRaC4esTjeraXEachRt8ZsSeGaWTPLyMoG hello.txt
+ 13 B / 13 B  100.00%%
+```
+
+On all the nodes, including the bootsrap:
+
+`docker exec ipfs_host ipfs cat QmfM2r8seH2GiRaC4esTjeraXEachRt8ZsSeGaWTPLyMoG`
+
+## Network issues
+
+Can't connect to the bootstrap node. Go get the bootstrap node's address and port number.
+
+You can the address and port number from [step 5](#5-get-node-information).
+
+... or you can do.
+
+`hostname -I`
+
+The port number is typically 4001.
+
+Then on the peer node machines, check that the bootstrap node is listening. For example:
+
+`telnet 192.168.1.5 4001`
+
+If you can't connect, then maybe try another machine that all other peers can connect to.
+
 ## Helpful resources
+
+Check that you can indeed connect to the boostrap node:
+
+`telnet X.X.X.X yyyy`
 
 #### https://medium.com/@s_van_laar/deploy-a-private-ipfs-network-on-ubuntu-in-5-steps-5aad95f7261b
 
