@@ -1,0 +1,3 @@
+[submodule "private-network-ipfs"]
+	path = private-network-ipfs
+	url = https://github.com/7db9a/private-network-ipfs
