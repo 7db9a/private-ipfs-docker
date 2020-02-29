@@ -1,20 +1,10 @@
 # Private IPFS Network - Docker
 
-Pick a setup that you are looking for, then follow the instructions.
-
-### Setup A: run ipfs nodes each on seperate machines on a private network.
-
-On a single machine do [Setup](#setup) steps 1 - 6. Then run steps 1, 2, 4, 6 on the other machines.
-
-### Setup B: run multiple ipfs nodes on a single machine.
-
-On a single machine do [Setup](#setup) steps 1 - 5. Then on the same machine, repeat steps _ for each node.
-
-### Setup C: run multiple ipfs nodes on seperate machines and single nodes on other machines.
-
-Use Setup A and Setup B as examples on how to figure that out
+Create a private and dockerized ipfs network.
 
 ## Setup
+
+On a single machine do steps 1 - 6. Then run steps 1, 2, 4, 6 on the other machines.
 
 #### 1. Download and install
 
@@ -93,25 +83,17 @@ Your command will have a different path. See [Step 5](#5-get-node-information).
 
 #### https://medium.com/@s_van_laar/deploy-a-private-ipfs-network-on-ubuntu-in-5-steps-5aad95f7261b
 
-last update: 1/11/2019
-
 Detailed guide and appears clearly written, but it's not for Docker.
 
 #### https://github.com/Sitoi/private-network-ipfs
 
-last update: 8/13/2019
-
-Has a detailed README for private network using Docker. Has a docker-compose.yml. It's in Chinese (?), but the Google translattion is good enough.
+Has a detailed README for private network using Docker. Has a docker-compose.yml. It's in Chinese (?), but the Google translation is good enough.
 
 #### https://github.com/mohdrashid/docker-ipfs-cluster
-
-last update: 1/31/2019
 
 Couldn't makes sense of `Change “/cluster daemon --bootstrap /ip4//tcp/9096/ipfs/” with`. With what?
 
 #### https://github.com/psprings/docker-ipfs
-
-last update: 3/4/2018
 
 It's for a private network, but there is no docker-compose file.
 
@@ -120,7 +102,5 @@ It's for a private network, but there is no docker-compose file.
 Unclear if this is a private network setup.
 
 #### https://github.com/qnib/docker-ipfs
-
-last update: 11/30/2016
 
 Looks good, but it's not a private network setup.
