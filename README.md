@@ -9,7 +9,7 @@ On a single machine do steps 1 - 6. Then run steps 1, 2, 4, 6 on the other machi
 #### 1. Download and install
 
 ```
-git clone https://github.com/7db9a/private-ipfs-docker.git/
+git clone --recursive https://github.com/7db9a/private-ipfs-docker.git/
 cd private-ipfs-docker/private-network-ipfs
 make up
 ```
