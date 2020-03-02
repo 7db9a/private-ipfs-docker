@@ -43,7 +43,9 @@ go get -u github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen
 ./bin/ipfs-swarm-key-gen > swarm.key
 ```
 
-In another shell (don't exit the shell above).
+Keep the shell open.
+
+In another shell.
 
 `docker cp my-go:go/swarm.key private-network-ipfs/data/`
 
