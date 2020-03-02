@@ -2,7 +2,7 @@
 
 Create a private and dockerized ipfs network.
 
-This repo uses [private-network-ipfs](https://github.com/Sitoi/private-network-ipfs) as a submodule. So credits to its author. However, this README (you are reading from it now) is more understandable to me and is in English.
+This repo uses [private-network-ipfs](https://github.com/7db9a/private-network-ipfs) as a submodule. So credits to its author. However, this README (you are reading from it now) is more understandable to me and is in English.
 
 ## Table of Contents
 
