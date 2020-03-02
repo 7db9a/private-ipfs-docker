@@ -2,9 +2,20 @@
 
 Create a private and dockerized ipfs network.
 
+This repo uses [private-network-ipfs](https://github.com/Sitoi/private-network-ipfs) as a submodule. So credits to its author. However, this README (you are reading from it now) is more understandable to me and is in English.
+
+## Table of Contents
+
+1. [Setup](#setup)
+2. [Gotcha's](#gotchas)
+3. [Helpful resources](#helpful-resources)
+
 ## Setup
 
-On a single machine (bootstrap node) do steps 1 - 6. Then run steps 1, 2, 4, 6 on the other machines.
+* On a single machine (bootstrap node): steps 1 - 3a and 4 - 6.
+* Other machines (nodes): steps 1, 2, 3b, 4, and 6.
+* All machines: step 7.
+* Any machine: step 8.
 
 #### 1. Download and install
 
@@ -21,7 +32,7 @@ docker exec ipfs_host ipfs config --json API.HTTPHeaders.Access-Control-Allow-Or
 docker exec ipfs_host ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST"]'
 ```
 
-#### 3. Generate key and copy
+#### 3a. Generate key and copy
 
 `docker run -it --name my-go golang:1.13 bash`
 
@@ -37,6 +48,20 @@ In another shell (don't exit the shell above).
 `docker cp my-go:go/swarm.key private-network-ipfs/data/`
 
 You may now exit the container shell.
+
+#### 3b. Copy key into other nodes.
+
+The `swarm.key` you generated must be on all the nodes. Your nodes may be across the internet or on the same local area network. You don't want to publish your key to the world. I used rsync, but you can do what's best for you.
+
+```
+rsync -v -e ssh \
+data/swarm.key \
+me@machine2:/home/me/projects/private-ipfs-docker/private-network-ipfs/data/
+```
+
+Generally, like this:
+
+`rsync -v -e ssh path/to/file.txt username@address:/home/path/to/dir`
 
 #### 4. Remove the default boostrap node
 
@@ -109,9 +134,11 @@ On all the nodes, including the bootsrap:
 
 `docker exec ipfs_host ipfs cat QmfM2r8seH2GiRaC4esTjeraXEachRt8ZsSeGaWTPLyMoG`
 
-## Network issues
+## Gotcha's
 
-Can't connect to the bootstrap node. Go get the bootstrap node's address and port number.
+#### Netowrk Issues
+
+Can't connect to the bootstrap node? Go get the bootstrap node's address and port number.
 
 You can the address and port number from [step 5](#5-get-node-information).
 
@@ -129,10 +156,6 @@ If you can't connect, then maybe try another machine that all other peers can co
 
 ## Helpful resources
 
-Check that you can indeed connect to the boostrap node:
-
-`telnet X.X.X.X yyyy`
-
 #### https://medium.com/@s_van_laar/deploy-a-private-ipfs-network-on-ubuntu-in-5-steps-5aad95f7261b
 
 Detailed guide and appears clearly written, but it's not for Docker.
@@ -140,6 +163,8 @@ Detailed guide and appears clearly written, but it's not for Docker.
 #### https://github.com/Sitoi/private-network-ipfs
 
 Has a detailed README for private network using Docker. Has a docker-compose.yml. It's in Chinese (?), but the Google translation is good enough.
+
+This fine repo is a git submodule of the repo (you are reading from). I basically 'wrapped' my own README.md.
 
 #### https://github.com/mohdrashid/docker-ipfs-cluster
 
