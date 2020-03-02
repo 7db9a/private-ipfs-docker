@@ -56,14 +56,14 @@ You may now exit the container shell.
 The `swarm.key` you generated must be on all the nodes. Your nodes may be across the internet or on the same local area network. You don't want to publish your key to the world. I used rsync, but you can do what's best for you.
 
 ```
-rsync -v -e ssh \
+rsync -ve ssh \
 data/swarm.key \
 me@machine2:/home/me/projects/private-ipfs-docker/private-network-ipfs/data/
 ```
 
 Generally, like this:
 
-`rsync -v -e ssh path/to/file.txt username@address:/home/path/to/dir`
+`rsync -ve ssh path/to/file.txt username@address:/home/path/to/dir`
 
 #### 4. Remove the default boostrap node
 
