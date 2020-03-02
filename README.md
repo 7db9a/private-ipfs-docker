@@ -138,7 +138,7 @@ On all the nodes, including the bootsrap:
 
 ## Gotcha's
 
-#### Netowork issues
+#### Network issues
 
 Can't connect to the bootstrap node? Go get the bootstrap node's address and port number.
 
