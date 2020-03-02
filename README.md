@@ -65,11 +65,11 @@ Generally, like this:
 
 `rsync -ve ssh path/to/file.txt username@address:/home/path/to/dir/`
 
-#### 4. Remove the default boostrap node
+#### 4. Remove the default bootstrap node
 
 `docker exec ipfs_host ipfs bootstrap rm --all`
 
-Check that the bootsrap is empty
+Check that the bootstrap is empty
 
 `docker exec ipfs_host ipfs config show`
 
@@ -94,9 +94,9 @@ Check that the bootsrap is empty
 
 ```
 
-The above is an exmaple. You will have different information.
+The above is an examaple. You will have different information.
 
-#### 6. Boostrap node
+#### 6. Bootsrap node
 
 
 ```
