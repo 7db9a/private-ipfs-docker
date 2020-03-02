@@ -63,7 +63,7 @@ me@machine2:/home/me/projects/private-ipfs-docker/private-network-ipfs/data/
 
 Generally, like this:
 
-`rsync -ve ssh path/to/file.txt username@address:/home/path/to/dir`
+`rsync -ve ssh path/to/file.txt username@address:/home/path/to/dir/`
 
 #### 4. Remove the default boostrap node
 
