@@ -110,7 +110,7 @@ On the other machines (non-bootsrap), you'll need to get the ip address of the b
 
 In the below example, it's 192.168.1.5. Step 6a's ip address  is different because that one is running in docker. In this step, we need the actual host that docker is running on.
 
-You can login to the host of the bootstrap and do `ip route get 1.2.3.4 | awk '{print }'`. If you want to find it from the node your on, you get from `arp -a`.
+You can login to the host of the bootstrap and do `ip route get 1.2.3.4 | awk '{print }'`. If you want to find it from the node you're on, try `arp -a`.
 
 ```
 docker exec ipfs_host ipfs bootstrap add \
