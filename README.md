@@ -12,8 +12,8 @@ This repo uses [private-network-ipfs](https://github.com/7db9a/private-network-i
 
 ## Setup
 
-* On a single machine (bootstrap node): steps 1 - 3a and 4 - 6.
-* Other machines (nodes): steps 1, 2, 3b, 4, and 6.
+* On a single machine (bootstrap node): steps 1 - 3a and 4 - 6a.
+* Other machines (nodes): steps 1, 2, 3b, 4, and 6b.
 * All machines: step 7.
 * Any machine: step 8.
 
@@ -96,15 +96,27 @@ Check that the bootstrap is empty
 
 The above is an examaple. You will have different information.
 
-#### 6. Bootsrap node
-
+#### 6a. Add bootsrap node on bootsrap node
 
 ```
 docker exec ipfs_host ipfs bootstrap add \
 /ip4/192.168.96.2/tcp/4001/ipfs/QmRBMTxuQhk8fYmtwBb7JbYPFzydMznkTTrmWDf7AY62Pb
 ```
-
 Your command will have a different path. See [Step 5](#5-get-node-information).
+
+#### 6b. Add bootsrap node on other nodes
+
+On the other machines (non-bootsrap), you'll need to get the ip address of the bootsrap host.
+
+In the below example, it's 192.168.1.5. Step 6a's ip address  is different because that one is running in docker. In this step, we need the actual host that docker is running on.
+
+You can login to the host of the bootstrap and do `ip route get 1.2.3.4 | awk '{print }'`. If you want to find it from the node your on, you get from `arp -a`.
+
+```
+docker exec ipfs_host ipfs bootstrap add \
+/ip4/192.168.1.5/tcp/4001/ipfs/QmRBMTxuQhk8fYmtwBb7JbYPFzydMznkTTrmWDf7AY62Pb
+```
+
 
 #### 7. Restart nodes
 
